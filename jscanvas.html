@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSCanvas</title>
+</head>
+<body>
+    <canvas id="world" width="500" height="400" style="border: 1px solid black;"></canvas>
+
+    <script>
+        // inisialisasi canvas
+     let canvas = document.getElementById('world');
+     let context = canvas.getContext('2d');
+     
+    //  context.beginPath();
+
+    //  context.fillStyle = "black";
+
+    //  context.moveTo(50,10);
+    //  context.lineTo(150,10);
+     
+    //  context.moveTo(150,10);
+    //  context.lineTo(150,110);
+
+    //  context.moveTo(150,110);
+    //  context.lineTo(50,110);
+
+    //  context.moveTo(50,110);
+    //  context.lineTo(50,10);
+    //  context.stroke();
+    //  context.fillRect(50,10,100,100);
+
+    //  context.fillStyle = "blue"
+    //  context.strokeRect(300,10,100,100);
+    //  context.fillRect(300,10,100,100);
+
+     //context.clearRect(0, 0, 500, 400)
+
+     function createKotak(x,y){
+        context.fillStyle = "black";
+        context.fillRect(x,y,100,100);
+        canvas.fillStyle = "white";
+        context.strokeRect(x,y,100,100);
+     }
+
+     //membuat 30 fps
+     let xAwal = 300;
+     let yAwal = 10;
+     let speed = 5;
+
+     window.setInterval(function(){
+        context.clearRect(0, 0, 500, 400);
+        xGerak = xAwal;
+        yGerak = yAwal;
+        // xGerak = xAwal - speed;
+        // yGerak = yAwal + speed;
+        if (xGerak == 0){
+            yGerak = xAwal + speed;
+            yGerak = yAwal - speed;
+        }else{
+            xGerak = xAwal - speed;
+            yGerak = yAwal + speed;
+        }
+        xAwal = xGerak;
+        yAwal = yGerak;
+        createKotak(xGerak, yGerak);
+
+     },1000/30)
+    </script>
+</body>
+</html>
